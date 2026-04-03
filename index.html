@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sahil Currency Hub</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #020617, #0f172a 50%, #111827);
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(2, 6, 23, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #67e8f9;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #e5e7eb;
+      text-decoration: none;
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover {
+      color: #67e8f9;
+    }
+
+    .hero {
+      padding: 90px 0 60px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(34, 211, 238, 0.12);
+      color: #67e8f9;
+      border: 1px solid rgba(103, 232, 249, 0.2);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+      color: #67e8f9;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      font-size: 1.08rem;
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #34d399;
+      color: #041014;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-card,
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.24);
+    }
+
+    .hero-card h3,
+    .card h2 {
+      margin-bottom: 14px;
+      font-size: 1.3rem;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .feature-item {
+      background: rgba(2, 6, 23, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 14px;
+      color: #dbeafe;
+      line-height: 1.5;
+    }
+
+    section {
+      padding: 18px 0;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .card p,
+    .card li {
+      color: #cbd5e1;
+      line-height: 1.75;
+    }
+
+    .trust-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .trust-list li {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(2, 6, 23, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .highlight {
+      color: #67e8f9;
+      font-weight: 700;
+    }
+
+    .contact-box {
+      display: grid;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .contact-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(2, 6, 23, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #a5f3fc;
+    }
+
+    .contact-item a {
+      color: #ffffff;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-item a:hover {
+      color: #67e8f9;
+    }
+
+    .big-contact {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.2);
+    }
+
+    .big-contact p {
+      color: #ecfeff;
+      font-size: 1.02rem;
+    }
+
+    footer {
+      padding: 36px 0 42px;
+      text-align: center;
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding-top: 70px;
+      }
+
+      .hero h1 {
+        font-size: 1.95rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">🌍 Sahil Currency Hub</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#sell">Sell Notes</a>
+        <a href="#trust">Trust</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="badge">Buying banknotes from all countries</div>
+        <h1>Global <span>Banknote Buyer</span> & Collector</h1>
+        <p>
+          I am building a worldwide banknote collection and I am open to buying
+          notes from any country. If you have extra, duplicate, collectible
+          banknotes, you can contact me directly.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#contact">Contact Me</a>
+          <a class="btn btn-secondary" href="#sell">Sell Your Notes</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Why contact me</h3>
+        <div class="feature-list">
+          <div class="feature-item">Open to notes from any country</div>
+          <div class="feature-item">Single notes welcome</div>
+          <div class="feature-item">Direct and simple communication</div>
+          <div class="feature-item">Focused on long-term collector connections</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <div class="section-grid">
+        <div class="card">
+          <h2>About</h2>
+          <p>
+            Hello, I’m <span class="highlight">Sahil</span>. I am a dedicated
+            currency collector from India building a complete worldwide collection
+            of banknotes. I am interested in banknotes from all countries and I am
+            open to buying individual notes.
+          </p>
+        </div>
+
+        <div class="card" id="sell">
+          <h2>Sell Your Banknotes</h2>
+          <p>
+            If you have banknotes that you want to sell, feel free to contact me.
+            I am interested in all world banknotes, where they are single pieces.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="trust">
+      <div class="section-grid">
+        <div class="card">
+          <h2>Trust & Safety</h2>
+          <ul class="trust-list">
+            <li>Genuine collector</li>
+            <li>Interested in worldwide banknotes</li>
+            <li>Respectful and direct communication</li>
+            <li>Open to long-term collector connections</li>
+          </ul>
+        </div>
+
+        <div class="card" id="contact">
+          <h2>Contact Me</h2>
+          <div class="contact-box">
+            <div class="contact-item">
+              <strong>Phone</strong>
+              <a href="sms:+919423591045">+91 9423591045</a>
+            </div>
+
+            <div class="contact-item">
+              <strong>Contact Method</strong>
+              <span>SMS only</span>
+            </div>
+          </div>
+
+          <div class="big-contact">
+            <p>
+              To contact me, please send an <strong>SMS only</strong> to
+              <strong>+91 9423591045</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Sahil Currency Hub • Connecting collectors worldwide
+  </footer>
+</body>
+</html>
